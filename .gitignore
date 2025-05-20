@@ -1,0 +1,38 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+pymupdf-venv/
+
+# VS / Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Environment variables / credentials
+.env
+
+# macOS junk
+.DS_Store
+
+# Log files
+*.log
+
+# Temp files
+*.tmp
+
+# Compiled PDF or doc artifacts
+*.pdf
+
+# Caches
+.cache/
+*.egg-info/
+
+# Misc
+.idea/
+*.bak

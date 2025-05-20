@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+google-generativeai
+pydantic
+pymupdf4llm
+python-multipart
