@@ -1,10 +1,8 @@
 # AFI_Projekt
 
-# 📄 PDF & Säkerhetsdatablad Extractor 🚀
+# 📄 Kompilering av säkerhetsdatablad i PDF-format
 
 Ett FastAPI-baserat API som analyserar säkerhetsdatablad i PDF-format och hämtar ut strukturerad information med hjälp av **Google Gemini API**.
-
----
 
 ## 🛠️ Funktioner
 
