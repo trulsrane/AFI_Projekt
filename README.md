@@ -1,12 +1,19 @@
 # AFI_Projekt
 
-## 📦 Installation
+# 📄 PDF & Säkerhetsdatablad Extractor 🚀
 
+Ett FastAPI-baserat API som analyserar säkerhetsdatablad i PDF-format och hämtar ut strukturerad information med hjälp av **Google Gemini API**.
 
-cd AFI_projekt
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
+---
+
+## 🛠️ Funktioner
+
+✅ Extraherar produktdata från PDF:er  
+✅ Integrerar med Google Gemini 2.0 Flash API  
+✅ Strukturerar data enligt Pydantic-modell  
+✅ Swagger-dokumentation via `/docs`  
+✅ Stöd för filuppladdning via API  
+
 ## 📥 Installation
 
 ### 1️⃣ Klona projektet
