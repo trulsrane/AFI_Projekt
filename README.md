@@ -9,7 +9,7 @@ Ett FastAPI-baserat API som analyserar säkerhetsdatablad i PDF-format och hämt
 ✅ Extraherar produktdata från PDF:er  
 ✅ Integrerar med Google Gemini 2.0 Flash API  
 ✅ Strukturerar data enligt Pydantic-modell  
-✅ Swagger-dokumentation via `/docs`  
+✅ Returnerar data i JSON-format
 ✅ Stöd för filuppladdning via API  
 
 ## 📥 Installation
