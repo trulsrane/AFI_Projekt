@@ -56,7 +56,7 @@ system_instruction = "Du är en expert på kemi och ska hitta följande uppgifte
 
 class GeminiHandler:
     def __init__(self):
-        api_key = "AIzaSyBHipGwPBbevotmpvVXBhs7MOvM2VLcybg"
+        api_key = "GEMINI_API_KEY"
         if not api_key:
             raise ValueError("GEMINI_API_KEY saknas i environment-variablerna.")
         self.client = genai.Client(api_key=api_key)
