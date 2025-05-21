@@ -1,6 +1,10 @@
 fastapi
 uvicorn
-google-generativeai
+google-genai
 pydantic
+pymupdf
 pymupdf4llm
 python-multipart
+python-dotenv
+requests
+pypdfium2
