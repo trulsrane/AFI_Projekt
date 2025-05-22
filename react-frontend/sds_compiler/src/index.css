@@ -11,3 +11,164 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Förslag */
+/*.app-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #252525;
+    overflow: hidden;
+}*/
+
+/* Sidebar */
+/*.sidebar {
+    width: 417px;
+    height: 1117px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #1B1B1B;
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.5);
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}*/
+
+/* Text och rubriker */
+/*.text-white {
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.title {
+    position: absolute;
+    left: 47px;
+    top: 243px;
+    font-size: 20px;
+}
+
+.subtitle {
+    position: absolute;
+    left: 47px;
+    top: 292px;
+    font-size: 16px;
+}*/
+
+/* Dropzone och knappar */
+/*.dropzone {
+    width: 297px;
+    height: 198px;
+    position: absolute;
+    left: 47px;
+    top: 336px;
+    background: #252525;
+    border-radius: 12px;
+}
+
+.browse-button, .process-button, .regenerate-button, .download-button {
+    height: 49px;
+    position: absolute;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: white;
+    word-wrap: break-word;
+}
+
+.browse-button {
+    width: 109px;
+    left: 87px;
+    top: 459px;
+    background: #1E1E1E;
+}
+
+.process-button {
+    width: 109px;
+    left: 63px;
+    top: 558px;
+    background: #1E1E1E;
+    border: 2px solid #252525;
+}
+
+.regenerate-button {
+    width: 125px;
+    left: 1020px;
+    top: 546px;
+    background: #1E1E1E;
+    border: 2px solid #1B1B1B;
+}
+
+.download-button {
+    width: 107px;
+    left: 1165px;
+    top: 546px;
+    background: #465F9D;
+    border: 2px solid #252525;
+}*/
+
+/* Dropzone-text */
+/*.dropzone-text {
+    position: absolute;
+    left: 86px;
+    top: 376px;
+    font-size: 16px;
+}*/
+
+/* Små element */
+/*.small-rect {
+    width: 15px;
+    height: 30px;
+    position: absolute;
+    left: 12.5px;
+    top: 5px;
+    background: #252525;
+}*/
+
+/* PDF-fönster */
+/*.pdf-window, .compiled-window {
+    position: absolute;
+    background: #303030;
+    border-radius: 12px;
+    border: 1px solid #1E1E1E;
+}
+
+.pdf-window {
+    width: 563px;
+    height: 773px;
+    left: 437px;
+    top: 142px;
+}
+
+.compiled-window {
+    width: 563px;
+    height: 392px;
+    left: 1020px;
+    top: 142px;
+}*/
+
+/* PDF-titlar */
+/*.pdf-title, .compiled-title {
+    position: absolute;
+    font-size: 16px;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.pdf-title {
+    left: 447px;
+    top: 112px;
+}
+
+.compiled-title {
+    left: 1027px;
+    top: 112px;
+}*/
+
