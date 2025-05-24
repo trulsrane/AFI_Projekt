@@ -27,6 +27,7 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\venv\Scripts\Activate.ps1
 ````
 OBS! Att ändra execution policy behövs inte alltid.
+
 Mac/Linux:
 ````
 python3 -m venv venv
@@ -50,6 +51,3 @@ Gå in på följande för att testa endpoints:
 📑 Swagger UI: http://127.0.0.1:8000/docs
 
 📖 ReDoc: http://127.0.0.1:8000/redoc
-
-
-MIT License © 2025 Truls Rane

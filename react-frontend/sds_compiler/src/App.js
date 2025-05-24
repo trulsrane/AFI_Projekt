@@ -26,7 +26,7 @@ export const App = () => {
     );
 };
 
-export default App;
+//export default App;
 
 
 
@@ -59,32 +59,31 @@ function App() {
 }
 
 export default App;
-
-//Förslag
-//import React from 'react'
-
-//const App = () => {
-//    const pdf_name = "example.pdf"
-
-//    return (
-//        <div className="app-container">
-//            <div className="sidebar"></div>
-//            <div className="text-white title">Your documents</div>
-//            <div className="text-white subtitle">Upload your PDFs here and click on ‘Process’</div>
-//            <div className="dropzone"></div>
-//            <div className="browse-button">Browse files</div>
-//            <div className="process-button">Process</div>
-//            <div className="text-white dropzone-text">Drag and drop files here</div>
-//            <div className="small-rect"></div>
-//            <div className="pdf-window"></div>
-//            <div className="compiled-window"></div>
-//            <div className="pdf-title">Your PDF: {pdf_name}</div>
-//            <div className="compiled-title">Compiled PDF:</div>
-//            <div className="regenerate-button">Re-generate</div>
-//            <div className="download-button">Download</div>
-//        </div>
-//    )
-//}
-
-//export default App
 */
+
+/*Förslag*/
+
+const App = () => {
+    const [pdfData, setPdfData] = useState(null);
+
+    return (
+        <div className="app-container">
+            <div className="sidebar"></div>
+            <div className="text-white title">Your documents</div>
+            <div className="text-white subtitle">Upload your PDFs here and click on ‘Process’<FileUploader onFileSelect={setPdfData} /></div>
+            <div className="dropzone"></div>
+            <div className="browse-button">Browse files</div>
+            <div className="process-button">Process</div>
+            <div className="text-white dropzone-text">Drag and drop files here</div>
+            <div className="small-rect"></div>
+            <div className="pdf-window"><PDFViewer file={pdfData} /></div>
+            <div className="compiled-window"></div>
+            <div className="pdf-title">Your PDF: {}</div>
+            <div className="compiled-title">Compiled PDF:</div>
+            <div className="regenerate-button">Re-generate</div>
+            <div className="download-button">Download</div>
+        </div>
+    )
+}
+
+export default App
