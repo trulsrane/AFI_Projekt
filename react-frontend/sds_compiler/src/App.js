@@ -1,4 +1,29 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import FileUploader from './components/FileUploader';
+import PDFViewer from './components/PDFViewer';
+
+
+const App = () => {
+    const [pdfData, setPdfData] = useState(null);
+
+    return (
+        <div style={{ padding: 20 }}>
+            <h2>Upload and view PDF</h2>
+            <FileUploader onFileSelect={setPdfData} />
+            <h2>View PDF</h2>
+            <PDFViewer file={pdfData} />
+        </div>
+    );
+};
+
+export default App;
+
+
+
+
+
+
+/* logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -51,3 +76,4 @@ export default App;
 //}
 
 //export default App
+*/
