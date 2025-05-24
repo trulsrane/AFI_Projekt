@@ -4,7 +4,7 @@
 }
 
 
-/*body {
+body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -16,19 +16,19 @@
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}*/
+}
 
-/* Förslag */
-/*.app-container {
+ Förslag 
+.app-container {
     width: 100%;
     height: 100%;
     position: relative;
     background: #252525;
     overflow: hidden;
-}*/
+}
 
-/* Sidebar */
-/*.sidebar {
+ Sidebar 
+.sidebar {
     width: 417px;
     height: 1117px;
     position: absolute;
@@ -38,10 +38,10 @@ code {
     box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.5);
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
-}*/
+}
 
-/* Text och rubriker */
-/*.text-white {
+ Text och rubriker 
+.text-white {
     color: white;
     font-family: 'Outfit', sans-serif;
     font-weight: 400;
@@ -60,10 +60,10 @@ code {
     left: 47px;
     top: 292px;
     font-size: 16px;
-}*/
+}
 
-/* Dropzone och knappar */
-/*.dropzone {
+ Dropzone och knappar 
+.dropzone {
     width: 297px;
     height: 198px;
     position: absolute;
@@ -116,28 +116,28 @@ code {
     top: 546px;
     background: #465F9D;
     border: 2px solid #252525;
-}*/
+}
 
-/* Dropzone-text */
-/*.dropzone-text {
+ Dropzone-text 
+.dropzone-text {
     position: absolute;
     left: 86px;
     top: 376px;
     font-size: 16px;
-}*/
+}
 
-/* Små element */
-/*.small-rect {
+ Små element 
+.small-rect {
     width: 15px;
     height: 30px;
     position: absolute;
     left: 12.5px;
     top: 5px;
     background: #252525;
-}*/
+}
 
-/* PDF-fönster */
-/*.pdf-window, .compiled-window {
+ PDF-fönster 
+.pdf-window, .compiled-window {
     position: absolute;
     background: #303030;
     border-radius: 12px;
@@ -149,6 +149,7 @@ code {
     height: 773px;
     left: 437px;
     top: 142px;
+    background: #303030;
 }
 
 .compiled-window {
@@ -156,10 +157,10 @@ code {
     height: 392px;
     left: 1020px;
     top: 142px;
-}*/
+}
 
-/* PDF-titlar */
-/*.pdf-title, .compiled-title {
+ PDF-titlar 
+.pdf-title, .compiled-title {
     position: absolute;
     font-size: 16px;
     color: white;
@@ -176,5 +177,5 @@ code {
 .compiled-title {
     left: 1027px;
     top: 112px;
-}*/
+}
 
