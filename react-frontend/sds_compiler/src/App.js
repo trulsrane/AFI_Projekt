@@ -1,22 +1,33 @@
-import React, { useState } from 'react';
-import FileUploader from './components/FileUploader';
-import PDFViewer from './components/PDFViewer';
+import React, { useState } from "react";
+import FileUploader from "./components/FileUploader";
+import PDFViewer from "./components/PDFViewer";
 
-
-const App = () => {
-    const [pdfData, setPdfData] = useState(null);
+export const App = () => {
+    const [selectedFile, setSelectedFile] = useState(null);
 
     return (
-        <div style={{ padding: 20 }}>
-            <h2>Upload and view PDF</h2>
-            <FileUploader onFileSelect={setPdfData} />
-            <h2>View PDF</h2>
-            <PDFViewer file={pdfData} />
+        <div className="app-container">
+            <h2>Ladda upp och visa PDF</h2>
+
+            <FileUploader onFileSelect={setSelectedFile} />
+
+            {selectedFile && (
+                <>
+                    <div className="pdf-info">
+                        <span className="pdf-filename">{selectedFile.name}</span>
+                    </div>
+                    <div className="pdf-viewer-container">
+                        <PDFViewer file={selectedFile} />
+                    </div>
+                    
+                </>
+            )}
         </div>
     );
 };
 
 export default App;
+
 
 
 
