@@ -7,7 +7,7 @@ export const App = () => {
 
     return (
         <div className="app-container">
-            <h2>Ladda upp och visa PDF</h2>
+            <h2>Upload and view PDF-file</h2>
 
             <FileUploader onFileSelect={setSelectedFile} />
 
