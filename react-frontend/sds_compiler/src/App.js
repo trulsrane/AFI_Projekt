@@ -6,7 +6,7 @@ export const App = () => {
     const [selectedFile, setSelectedFile] = useState(null);
 
     return (
-        <div className="app-container">
+        <div>
             <h2>Upload and view PDF-file</h2>
 
             <FileUploader onFileSelect={setSelectedFile} />
