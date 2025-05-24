@@ -6,7 +6,7 @@ body {
     background-color: #1e1e1e;
     color: #eee;
     height: 100vh;
-    overflow: hidden; /* Prevents scrollbars */
+    overflow: auto; 
 }
 
 /* Titel */
