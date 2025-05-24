@@ -8,7 +8,7 @@ const PDFViewer = ({ file }) => {
       src={file}
       type="application/pdf"
       width="100%"
-      height="400px"
+      height="100%"
     />
   );
 };

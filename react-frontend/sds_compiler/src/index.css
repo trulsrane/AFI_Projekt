@@ -1,16 +1,16 @@
 /* Root container */
 .app-container {
-    max-width: 1200px;
-    margin: 2rem auto;
+/*    max-width: 1200px;*/
+/*    margin: 2rem auto;*/
     background-color: #1e1e1e;
-    color: #eee;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    color: #eee;/*
+    padding: 2rem;*/
+/*    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);*/
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap: 2rem;*/
 }
 
 /* Titel */
@@ -32,6 +32,7 @@ h2 {
     gap: 2rem;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 5rem;
 }
 
 /* Enskild sektion */
@@ -42,20 +43,14 @@ h2 {
     padding: 1rem;
     flex: 1 1 45%;
     min-width: 300px;
+    height: 65vh;
     max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 /* PDF-rutor */
 .pdf-viewer-container, .compiled-window {
-    background-color: #303030;
-    border-radius: 8px;
-    border: 1px solid #1e1e1e;
-    padding: 1rem;
     width: 100%;
-    min-height: 400px;
+    height: 95%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,7 +68,7 @@ h2 {
 /* Knappar */
 .regenerate-button,
 .download-button {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     padding: 0.5rem 1rem;
     border-radius: 8px;
     font-size: 14px;

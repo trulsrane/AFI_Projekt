@@ -11,22 +11,21 @@ export const App = () => {
 
             <FileUploader onFileSelect={setSelectedFile} />
 
-            {selectedFile && (
+            
                 <div className="viewer-sections">
                     <div className="section">
-                        <div className="pdf-title">Your PDF: {selectedFile.name}</div>
+                        <div className="pdf-title">Your PDF:</div>
                         <div className="pdf-viewer-container">
                             <PDFViewer file={selectedFile} />
                         </div>
                     </div>
                     <div className="section">
                         <div className="compiled-title">Compiled PDF:</div>
-                        <div className="compiled-window"></div>                 
+                        <div className="compiled-window"></div> 
                         <button className="regenerate-button">Re-generate</button>
                         <button className="download-button">Download</button>
                     </div>
                 </div>
-            )}
 
         </div>
     );
