@@ -1,8 +1,6 @@
-/* Centrerar allt och ger bakgrund */
+/* Root container */
 .app-container {
-    max-width: 50%;
-    max-height: 100vh;
-    height: 75%;
+    max-width: 1200px;
     margin: 2rem auto;
     background-color: #1e1e1e;
     color: #eee;
@@ -12,31 +10,91 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 2rem;
 }
 
-/* Namn på PDF */
-.pdf-info {
-    margin: 1rem 0;
+/* Titel */
+h2 {
+    margin: 0;
     text-align: center;
 }
 
-/* PDF-visarens container */
-.pdf-viewer-container {
+/* Filinformation */
+.pdf-info {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+/* Viewer + compiled container */
+.viewer-sections {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Enskild sektion */
+.section {
     background-color: #272727;
     border-radius: 12px;
     border: 1px solid #444;
-    width: 100%; 
-    max-width: 75%; 
-    max-height: 100%; 
-    overflow: auto;
     padding: 1rem;
-    margin-bottom: 1rem;
+    flex: 1 1 45%;
+    min-width: 300px;
+    max-width: 100%;
     display: flex;
-    justify-content: center; 
+    flex-direction: column;
+    align-items: center;
+}
+
+/* PDF-rutor */
+.pdf-viewer-container, .compiled-window {
+    background-color: #303030;
+    border-radius: 8px;
+    border: 1px solid #1e1e1e;
+    padding: 1rem;
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+/* Rubriker för sektioner */
+.pdf-title, .compiled-title {
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    font-family: 'Outfit', sans-serif;
+    color: white;
+}
+
+/* Knappar */
+.regenerate-button,
+.download-button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Outfit', sans-serif;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.regenerate-button {
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+}
+
+.download-button {
+    background-color: #465F9D;
+    border: none;
 }
 
 
+/*
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -210,5 +268,5 @@ code {
 .compiled-title {
     left: 1027px;
     top: 112px;
-}
+}*/
 
