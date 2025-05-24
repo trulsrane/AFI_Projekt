@@ -21,6 +21,7 @@ const FileUploader = ({ onFileSelect }) => {
 
     return (
         <div className="file-uploader">
+            <h2>Upload and view PDF-file</h2>
             <div className="file-upload-row">
                 <label htmlFor="file-upload" className="browse-button">Browse</label>
                 <span className="upload-instruction">Browse and upload file</span>

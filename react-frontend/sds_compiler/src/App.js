@@ -7,11 +7,7 @@ export const App = () => {
 
     return (
         <div>
-            <h2>Upload and view PDF-file</h2>
-
             <FileUploader onFileSelect={setSelectedFile} />
-
-            
                 <div className="viewer-sections">
                     <div className="section">
                         <div className="pdf-title">Your PDF:</div>
