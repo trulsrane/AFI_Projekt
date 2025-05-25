@@ -6,23 +6,29 @@ export const App = () => {
     const [selectedFile, setSelectedFile] = useState(null);
 
     return (
-        <div>
-            <FileUploader onFileSelect={setSelectedFile} />
+        <div className="app-container">
+            <div className="sidebar">
+                <FileUploader onFileSelect={setSelectedFile} />
+            </div>
+            <div className="main-content">
                 <div className="viewer-sections">
                     <div className="section">
-                        <div className="pdf-title">Your PDF:</div>
-                        <div className="pdf-viewer-container">
-                            <PDFViewer file={selectedFile} />
-                        </div>
+                        <div className="pdf-title">Your PDF:
+                    </div>
+                    <div className="pdf-viewer-container">
+                        <PDFViewer file={selectedFile} />
+                    </div>
                     </div>
                     <div className="section">
-                        <div className="compiled-title">Compiled PDF:</div>
-                        <div className="compiled-window"></div> 
-                        <button className="regenerate-button">Re-generate</button>
-                        <button className="download-button">Download</button>
+                        <div className="compiled-title">Compiled PDF:
+                        </div>
+                        <div className="compiled-window">
+                        </div> 
+                            <button className="regenerate-button">Re-generate</button>
+                            <button className="download-button">Download</button>
                     </div>
                 </div>
-
+            </div>
         </div>
     );
 };

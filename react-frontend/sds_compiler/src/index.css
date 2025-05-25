@@ -6,7 +6,13 @@ body {
     background-color: #1e1e1e;
     color: #eee;
     height: 100vh;
-    overflow: auto; 
+    overflow: auto;
+    display: flex;
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
 }
 
 /* Titel */
@@ -27,7 +33,8 @@ h2 {
     gap: 2rem;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 5rem;
+    padding: 2rem 0 0 0;
+    background-color: blue; /*Radera denna rad när du är klar med layouten*/
 }
 
 /* Enskild sektion */
@@ -36,8 +43,8 @@ h2 {
     border-radius: 12px;
     border: 1px solid #444;
     padding: 1rem;
-    width: 35%;
-    height: 65vh;
+    width: 37%;
+    height: 80vh;
 }
 
 /* PDF-rutor */
@@ -48,6 +55,7 @@ h2 {
     justify-content: center;
     align-items: center;
     overflow: auto;
+    background-color: green; /*Radera denna rad när du är klar med layouten*/
 }
 
 /* Rubriker för sektioner */
@@ -128,182 +136,23 @@ h2 {
     font-style: italic;
 }
 
-
-
-
-/*
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
- Förslag 
-.app-container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    background: #252525;
-    overflow: hidden;
-}
-
- Sidebar 
+/* Sidebar till vänster */
 .sidebar {
-    width: 417px;
-    height: 1117px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: #1B1B1B;
-    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.5);
-    border-top-right-radius: 12px;
-    border-bottom-right-radius: 12px;
-}
-
- Text och rubriker 
-.text-white {
-    color: white;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 400;
-    word-wrap: break-word;
-}
-
-.title {
-    position: absolute;
-    left: 47px;
-    top: 243px;
-    font-size: 20px;
-}
-
-.subtitle {
-    position: absolute;
-    left: 47px;
-    top: 292px;
-    font-size: 16px;
-}
-
- Dropzone och knappar 
-.dropzone {
-    width: 297px;
-    height: 198px;
-    position: absolute;
-    left: 47px;
-    top: 336px;
-    background: #252525;
-    border-radius: 12px;
-}
-
-.browse-button, .process-button, .regenerate-button, .download-button {
-    height: 49px;
-    position: absolute;
-    border-radius: 12px;
+    width: 20vw;
+    background-color: #1B1B1B;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    color: white;
-    word-wrap: break-word;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.4);
 }
 
-.browse-button {
-    width: 109px;
-    left: 87px;
-    top: 459px;
-    background: #1E1E1E;
+/* Main content till höger */
+.main-content {
+    width: 80vw;
+    padding: 0rem; /*Padding sabbar layouten*/
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: red; /*Radera denna rad när du är klar med layouten*/
 }
-
-.process-button {
-    width: 109px;
-    left: 63px;
-    top: 558px;
-    background: #1E1E1E;
-    border: 2px solid #252525;
-}
-
-.regenerate-button {
-    width: 125px;
-    left: 1020px;
-    top: 546px;
-    background: #1E1E1E;
-    border: 2px solid #1B1B1B;
-}
-
-.download-button {
-    width: 107px;
-    left: 1165px;
-    top: 546px;
-    background: #465F9D;
-    border: 2px solid #252525;
-}
-
- Dropzone-text 
-.dropzone-text {
-    position: absolute;
-    left: 86px;
-    top: 376px;
-    font-size: 16px;
-}
-
- Små element 
-.small-rect {
-    width: 15px;
-    height: 30px;
-    position: absolute;
-    left: 12.5px;
-    top: 5px;
-    background: #252525;
-}
-
- PDF-fönster 
-.pdf-window, .compiled-window {
-    position: absolute;
-    background: #303030;
-    border-radius: 12px;
-    border: 1px solid #1E1E1E;
-}
-
-.pdf-window {
-    width: 563px;
-    height: 773px;
-    left: 437px;
-    top: 142px;
-    background: #303030;
-}
-
-.compiled-window {
-    width: 563px;
-    height: 392px;
-    left: 1020px;
-    top: 142px;
-}
-
- PDF-titlar 
-.pdf-title, .compiled-title {
-    position: absolute;
-    font-size: 16px;
-    color: white;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 400;
-    word-wrap: break-word;
-}
-
-.pdf-title {
-    left: 447px;
-    top: 112px;
-}
-
-.compiled-title {
-    left: 1027px;
-    top: 112px;
-}*/
-

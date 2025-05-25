@@ -20,6 +20,7 @@ const FileUploader = ({ onFileSelect }) => {
     };
 
     return (
+        <div className=".sidebar">
         <div className="file-uploader">
             <h2>Upload and view PDF-file</h2>
             <div className="file-upload-row">
@@ -34,6 +35,7 @@ const FileUploader = ({ onFileSelect }) => {
                 className="file-input"
             />
             {error && <div className="file-error">{error}</div>}
+            </div>
         </div>
     );
 };
