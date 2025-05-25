@@ -27,6 +27,14 @@ h2 {
     margin-top: 1rem;
 }
 
+.pdf-filename {
+    font-weight: normal;
+    font-style: italic;
+    color: #ccc;
+    margin-left: 0.5rem;
+}
+
+
 /* Viewer + compiled container */
 .viewer-sections {
     display: flex;
@@ -34,7 +42,7 @@ h2 {
     justify-content: center;
     flex-wrap: wrap;
     padding: 2rem 0 0 0;
-    background-color: blue; /*Radera denna rad när du är klar med layouten*/
+   /* background-color: blue; Radera denna rad när du är klar med layouten*/
 }
 
 /* Enskild sektion */
@@ -43,7 +51,7 @@ h2 {
     border-radius: 12px;
     border: 1px solid #444;
     padding: 1rem;
-    width: 37%;
+    width: 40%;
     height: 80vh;
 }
 
@@ -55,7 +63,7 @@ h2 {
     justify-content: center;
     align-items: center;
     overflow: auto;
-    background-color: green; /*Radera denna rad när du är klar med layouten*/
+    /*background-color: green; Radera denna rad när du är klar med layouten*/
 }
 
 /* Rubriker för sektioner */
@@ -119,9 +127,9 @@ h2 {
     text-align: center;
 }
 
-    .browse-button:hover {
-        background-color: #3a4e80;
-    }
+.browse-button:hover {
+    background-color: #3a4e80;
+}
 
 .upload-instruction {
     font-size: 14px;
@@ -135,6 +143,62 @@ h2 {
     font-size: 12px;
     font-style: italic;
 }
+
+/*CSS FÖR ATT FIXA LISTAN OCG DRAG AND DROP- KOLLA ÖVER DET SEN*/
+.file-list {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 1rem;
+    overflow-y: auto;
+    max-height: 60vh;
+}
+
+.file-card {
+    background-color: #2e2e2e;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #eee;
+    cursor: grab;
+    border: 1px solid #444;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.file-card:hover {
+    background-color: #3e3e3e;
+}
+
+.drop-hint {
+    color: #aaa;
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
+}
+
+
+.clear-button {
+    margin-top: 1.5rem;
+    background-color: #842029;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.clear-button:hover {
+    background-color: #a7353f;
+}
+
+/*HÄR SLUTAR DEN DELEN*/
+
 
 /* Sidebar till vänster */
 .sidebar {
@@ -154,5 +218,5 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    background-color: red; /*Radera denna rad när du är klar med layouten*/
+    /*background-color: red; Radera denna rad när du är klar med layouten*/
 }

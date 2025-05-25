@@ -1,8 +1,39 @@
 import React, { useState } from "react";
-import FileUploader from "./components/FileUploader";
-import PDFViewer from "./components/PDFViewer";
+import Sidebar from "./components/Sidebar";
+import ViewerSection from "./components/ViewerSection";
+import CompiledSection from "./components/CompiledSection";
 
 export const App = () => {
+    const [uploadedFiles, setUploadedFiles] = useState([]);
+    const [selectedFile, setSelectedFile] = useState(null);
+
+    return (
+        <div className="app-container">
+            <Sidebar
+                uploadedFiles={uploadedFiles}
+                setUploadedFiles={setUploadedFiles}
+                setSelectedFile={setSelectedFile}
+            />
+
+            <div className="main-content">
+                <div className="viewer-sections">
+                    <ViewerSection
+                        selectedFile={selectedFile}
+                        uploadedFiles={uploadedFiles}
+                        setSelectedFile={setSelectedFile}
+                    />
+                    <CompiledSection />
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default App;
+
+
+// Gammla versionen utan drag and drop och uppladdningslista.
+/*export const App = () => {
     const [selectedFile, setSelectedFile] = useState(null);
 
     return (
@@ -34,7 +65,7 @@ export const App = () => {
 };
 
 export default App;
-
+*/
 
 
 /* logo from './logo.svg';

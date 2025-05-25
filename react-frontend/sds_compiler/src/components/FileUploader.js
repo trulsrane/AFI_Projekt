@@ -1,31 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const FileUploader = ({ onFileSelect }) => {
-    const [error, setError] = useState('');
+const FileUploader = ({ onFilesUpdate }) => {
     const fileType = ['application/pdf'];
 
     const handleChange = (e) => {
-        const file = e.target.files[0];
-        if (file && fileType.includes(file.type)) {
-            let reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onloadend = () => {
-                setError('');
-                onFileSelect(reader.result);
-            };
-        } else {
-            setError('Please select a valid PDF file');
-            onFileSelect(null);
-        }
+        const selectedFiles = Array.from(e.target.files);
+        const validFiles = selectedFiles.filter(file => fileType.includes(file.type));
+
+        const readers = validFiles.map(file => {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onloadend = () => resolve({ name: file.name, data: reader.result });
+                reader.readAsDataURL(file);
+            });
+        });
+
+        Promise.all(readers).then(pdfFiles => {
+            onFilesUpdate((prev) => [...prev, ...pdfFiles]);
+        });
     };
 
     return (
-        <div className=".sidebar">
         <div className="file-uploader">
-            <h2>Upload and view PDF-file</h2>
+            <h2>Upload and view PDF-files</h2>
             <div className="file-upload-row">
                 <label htmlFor="file-upload" className="browse-button">Browse</label>
-                <span className="upload-instruction">Browse and upload file</span>
+                <span className="upload-instruction">Browse and upload file(s)</span>
             </div>
             <input
                 type="file"
@@ -33,9 +33,8 @@ const FileUploader = ({ onFileSelect }) => {
                 accept="application/pdf"
                 onChange={handleChange}
                 className="file-input"
+                multiple
             />
-            {error && <div className="file-error">{error}</div>}
-            </div>
         </div>
     );
 };
