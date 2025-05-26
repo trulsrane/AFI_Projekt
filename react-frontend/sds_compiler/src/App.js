@@ -51,13 +51,13 @@ export const App = () => {
 
                 </div>
             </div>
+
             <div className="footer">
                 (C) 2025 MIT Solutions,
             </div>
             <div className="footer-lower">
                 Jesper Olofsson and Truls Rane
             </div>
-
 
         </div>
     );
