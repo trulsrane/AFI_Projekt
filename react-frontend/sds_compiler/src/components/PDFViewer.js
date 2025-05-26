@@ -4,6 +4,7 @@ const PDFViewer = ({ file }) => {
     if (!file) return null;
 
     return (
+        /* Visa PDF med iFrame */
         <iframe
             src={file}
             title="PDF Viewer"

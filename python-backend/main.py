@@ -75,9 +75,10 @@ def root():
 
 
 # Test för att skapa pdf av json ladda in: pip install reportlab
-
 @app.post("/generate-pdf/")
 async def generate_pdf(request: Request):
+    
+    # Hämtar JSON-data från frontend
     data = await request.json()
 
     buffer = io.BytesIO()
@@ -88,13 +89,14 @@ async def generate_pdf(request: Request):
     line_spacing = 14
     y = height - margin
 
+    # Skapar en footer med watermark
     def draw_footer():
         footer_text = "Created by MIT Solutions, (C) 2025"
         c.setFont("Helvetica-Oblique", 8)
         c.setFillColorRGB(0.6, 0.6, 0.6)
         text_width = c.stringWidth(footer_text, "Helvetica-Oblique", 8)
         c.drawString((width - text_width) / 2, 20, footer_text)
-        c.setFillColorRGB(0, 0, 0)  # återställ färg till svart
+        c.setFillColorRGB(0, 0, 0)
 
     c.setFont("Helvetica-Bold", 12)
     c.drawString(margin, y, "Compiled data")
@@ -102,6 +104,7 @@ async def generate_pdf(request: Request):
 
     c.setFont("Helvetica", 10)
 
+    # Läser in nyckelvärden 
     for key, value in data.items():
         if y < margin:
             draw_footer()
@@ -114,6 +117,7 @@ async def generate_pdf(request: Request):
         y -= line_spacing
         c.setFont("Helvetica", 10)
 
+        # Är nyckelvärden en lista, skapa den
         if isinstance(value, list):
             for item in value:
                 wrapped_lines = simpleSplit(str(item), "Helvetica", 10, width - 2 * margin)
@@ -125,6 +129,7 @@ async def generate_pdf(request: Request):
                         c.setFont("Helvetica", 10)
                     c.drawString(margin + 10, y, f"- {line}")
                     y -= line_spacing
+        # För subvärden
         elif isinstance(value, dict):
             for subkey, subvalue in value.items():
                 subtext = f"{subkey}: {subvalue}"
@@ -137,6 +142,7 @@ async def generate_pdf(request: Request):
                         c.setFont("Helvetica", 10)
                     c.drawString(margin + 10, y, line)
                     y -= line_spacing
+        # För resten
         else:
             wrapped_lines = simpleSplit(str(value), "Helvetica", 10, width - 2 * margin)
             for line in wrapped_lines:
@@ -150,8 +156,9 @@ async def generate_pdf(request: Request):
 
         y -= line_spacing
 
-    draw_footer()  # sista sidan också
+    draw_footer()
     c.save()
     buffer.seek(0)
 
+    # Skicka PDF som en stream tillbaka till frontend
     return StreamingResponse(buffer, media_type="application/pdf")

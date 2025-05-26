@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 
+// visa sammanstäld data i text eller pdf
 const CompiledSection = ({ compiledData, compiledPdfUrl, setCompiledPdfUrl }) => {
     const [isGenerating, setIsGenerating] = useState(false);
 
     const handleGeneratePdf = async () => {
         if (!compiledData) return;
+
         setIsGenerating(true);
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
         try {
+            // Skicka data till backend för att generera en PDF-fil
             const response = await fetch("http://localhost:8000/generate-pdf/", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -15,17 +20,22 @@ const CompiledSection = ({ compiledData, compiledPdfUrl, setCompiledPdfUrl }) =>
 
             if (!response.ok) throw new Error("Failed to generate PDF");
 
+            // Hämta PDF som blob (binary large object)
             const blob = await response.blob();
             const pdfUrl = URL.createObjectURL(blob);
             setCompiledPdfUrl(pdfUrl);
+
         } catch (error) {
+
             console.error("PDF generation failed:", error);
             alert("PDF could not be generated.");
+
         } finally {
             setIsGenerating(false);
         }
     };
 
+    // Visa JSON-data från backend i läsbar text
     const renderReadableData = (data) => {
         if (typeof data !== "object" || data === null) {
             return <p>{String(data)}</p>;
@@ -37,7 +47,7 @@ const CompiledSection = ({ compiledData, compiledPdfUrl, setCompiledPdfUrl }) =>
                     <div key={key} style={{ marginBottom: "1rem" }}>
                         <strong>{key}</strong>:<br />
                         {Array.isArray(value) ? (
-                            value.map((item, i) => <div key={i}>• {item}</div>)
+                            value.map((item, i) => <div key={i}>- {item}</div>)
                         ) : typeof value === "object" ? (
                             renderReadableData(value)
                         ) : (
@@ -52,9 +62,9 @@ const CompiledSection = ({ compiledData, compiledPdfUrl, setCompiledPdfUrl }) =>
     return (
         <div className="section">
             <div className="compiled-title">Extracted data: </div>
-
             <div className="compiled-window">
                 {compiledPdfUrl ? (
+                    /* Visa PDF med iFrame */
                     <iframe
                         src={compiledPdfUrl}
                         width="100%"
@@ -68,15 +78,14 @@ const CompiledSection = ({ compiledData, compiledPdfUrl, setCompiledPdfUrl }) =>
                 )}
             </div>
 
-
             <button
                 className="regenerate-button"
                 onClick={handleGeneratePdf}
                 disabled={!compiledData || isGenerating}
             >
+                {/* Byt utseende på knapp beroende på state */}
                 {isGenerating ? "Generating..." : "Generate PDF"}
             </button>
-
             <button
                 className="download-button"
                 onClick={() => {

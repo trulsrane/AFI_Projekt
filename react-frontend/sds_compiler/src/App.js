@@ -9,6 +9,8 @@ export const App = () => {
     const [uploadedFiles, setUploadedFiles] = useState([]);
     const [selectedFile, setSelectedFile] = useState(null);
     const [compiledData, setCompiledData] = useState(null);
+
+    // Logik för rensa knappar
     const handleClearFiles = () => {
         setUploadedFiles([]);
         setSelectedFile(null);
@@ -21,9 +23,6 @@ export const App = () => {
         setCompiledData(null);
         setCompiledPdfUrl(null);
     };
-
-
-    
 
     return (
         <div className="app-container">

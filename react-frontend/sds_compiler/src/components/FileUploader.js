@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 
 const FileUploader = ({ onFilesUpdate }) => {
+
     const fileType = ['application/pdf'];
     const [error, setError] = useState('');
 
     const handleChange = (e) => {
+
         const selectedFiles = Array.from(e.target.files);
 
+        // Sortera ut ogiltiga filer
         const validFiles = selectedFiles.filter(file => fileType.includes(file.type));
         const invalidFiles = selectedFiles.filter(file => !fileType.includes(file.type));
 
@@ -16,6 +19,7 @@ const FileUploader = ({ onFilesUpdate }) => {
             setError('');
         }
 
+        // Läs varje PDF och konvertera till base64 sträng
         const readers = validFiles.map(file => {
             return new Promise((resolve) => {
                 const reader = new FileReader();
@@ -24,6 +28,7 @@ const FileUploader = ({ onFilesUpdate }) => {
             });
         });
 
+        // Uppdatera fil-listan efter att alla tillagda PDF-filer är inlästa
         Promise.all(readers).then(pdfFiles => {
             onFilesUpdate((prev) => [...prev, ...pdfFiles]);
         });
@@ -31,8 +36,10 @@ const FileUploader = ({ onFilesUpdate }) => {
 
     return (
         <div className="file-uploader">
+
             <h2> Safety Data Sheet analyzer</h2>
             <h3>Upload and view PDF-files</h3>
+
             <div className="file-upload-row">
                 <label htmlFor="file-upload" className="browse-button">Browse</label>
                 <span className="upload-instruction">Browse and upload file(s)</span>

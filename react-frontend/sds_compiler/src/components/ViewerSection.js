@@ -1,8 +1,10 @@
 import React from "react";
 import PDFViewer from "./PDFViewer";
 
+// Komponent för att visa, dra/släppa och analysera en PDF
 const ViewerSection = ({ selectedFile, uploadedFiles, setSelectedFile, setCompiledData, setCompiledPdfUrl, onClearPDF }) => {
 
+    // Drag and drop funkion
     const handleDrop = (e) => {
         e.preventDefault();
         const fileData = e.dataTransfer.getData("application/pdf");
@@ -17,16 +19,19 @@ const ViewerSection = ({ selectedFile, uploadedFiles, setSelectedFile, setCompil
         return match ? match.name : "Unnamed file";
     };
 
+    // Skickar fil till backend för analys med gemeni
     const handleAnalyzePDF = async () => {
         if (!selectedFile) return alert("No file selected!");
 
         try {
-            const res = await fetch(selectedFile);
-            const blob = await res.blob();
+            
+            const res = await fetch(selectedFile); // Hämta PDF från base64-url
+            const blob = await res.blob(); // Konvertera till blob
 
             const formData = new FormData();
             formData.append("file", blob, "uploaded.pdf");
 
+            // Backend anrop
             const response = await fetch("http://localhost:8000/process-pdf-and-analyze/", {
                 method: "POST",
                 body: formData,
