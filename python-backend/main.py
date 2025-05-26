@@ -115,7 +115,7 @@ async def generate_pdf(request: Request):
                         c.showPage()
                         y = height - margin
                         c.setFont("Helvetica", 10)
-                    c.drawString(margin + 10, y, f"-{line}")
+                    c.drawString(margin + 10, y, f"- {line}")
                     y -= line_spacing
         elif isinstance(value, dict):
             for subkey, subvalue in value.items():
