@@ -88,6 +88,14 @@ async def generate_pdf(request: Request):
     line_spacing = 14
     y = height - margin
 
+    def draw_footer():
+        footer_text = "Created by MIT Solutions, (C) 2025"
+        c.setFont("Helvetica-Oblique", 8)
+        c.setFillColorRGB(0.6, 0.6, 0.6)
+        text_width = c.stringWidth(footer_text, "Helvetica-Oblique", 8)
+        c.drawString((width - text_width) / 2, 20, footer_text)
+        c.setFillColorRGB(0, 0, 0)  # återställ färg till svart
+
     c.setFont("Helvetica-Bold", 12)
     c.drawString(margin, y, "Compiled data")
     y -= line_spacing * 2
@@ -96,22 +104,22 @@ async def generate_pdf(request: Request):
 
     for key, value in data.items():
         if y < margin:
+            draw_footer()
             c.showPage()
             y = height - margin
             c.setFont("Helvetica", 10)
 
-        # Rubrik/key
         c.setFont("Helvetica-Bold", 10)
         c.drawString(margin, y, f"{key}:")
         y -= line_spacing
         c.setFont("Helvetica", 10)
 
-        # Hanterar Hxxx lista
         if isinstance(value, list):
             for item in value:
                 wrapped_lines = simpleSplit(str(item), "Helvetica", 10, width - 2 * margin)
                 for line in wrapped_lines:
                     if y < margin:
+                        draw_footer()
                         c.showPage()
                         y = height - margin
                         c.setFont("Helvetica", 10)
@@ -123,6 +131,7 @@ async def generate_pdf(request: Request):
                 wrapped_lines = simpleSplit(subtext, "Helvetica", 10, width - 2 * margin)
                 for line in wrapped_lines:
                     if y < margin:
+                        draw_footer()
                         c.showPage()
                         y = height - margin
                         c.setFont("Helvetica", 10)
@@ -132,14 +141,16 @@ async def generate_pdf(request: Request):
             wrapped_lines = simpleSplit(str(value), "Helvetica", 10, width - 2 * margin)
             for line in wrapped_lines:
                 if y < margin:
+                    draw_footer()
                     c.showPage()
                     y = height - margin
                     c.setFont("Helvetica", 10)
                 c.drawString(margin + 10, y, line)
                 y -= line_spacing
 
-        y -= line_spacing 
+        y -= line_spacing
 
+    draw_footer()  # sista sidan också
     c.save()
     buffer.seek(0)
 

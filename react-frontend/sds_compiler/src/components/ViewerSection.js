@@ -1,7 +1,8 @@
 import React from "react";
 import PDFViewer from "./PDFViewer";
 
-const ViewerSection = ({ selectedFile, uploadedFiles, setSelectedFile, setCompiledData, setCompiledPdfUrl}) => {
+const ViewerSection = ({ selectedFile, uploadedFiles, setSelectedFile, setCompiledData, setCompiledPdfUrl, onClearPDF }) => {
+
     const handleDrop = (e) => {
         e.preventDefault();
         const fileData = e.dataTransfer.getData("application/pdf");
@@ -9,10 +10,6 @@ const ViewerSection = ({ selectedFile, uploadedFiles, setSelectedFile, setCompil
             const parsedFile = JSON.parse(fileData);
             setSelectedFile(parsedFile.data);
         }
-    };
-
-    const handleClearPDF = () => {
-        setSelectedFile(null);
     };
 
     const getFileNameFromData = (data) => {
@@ -71,10 +68,9 @@ const ViewerSection = ({ selectedFile, uploadedFiles, setSelectedFile, setCompil
                     <div className="drop-hint">Drag and drop your PDF-file here</div>
                 )}
             </div>
-
             <button
                 className="clear-button"
-                onClick={handleClearPDF}
+                onClick={onClearPDF}
                 disabled={!selectedFile}
             >
                 Clear PDF

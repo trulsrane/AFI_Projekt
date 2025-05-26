@@ -9,7 +9,21 @@ export const App = () => {
     const [uploadedFiles, setUploadedFiles] = useState([]);
     const [selectedFile, setSelectedFile] = useState(null);
     const [compiledData, setCompiledData] = useState(null);
+    const handleClearFiles = () => {
+        setUploadedFiles([]);
+        setSelectedFile(null);
+        setCompiledData(null);
+        setCompiledPdfUrl(null);
+    };
 
+    const handleClearPDF = () => {
+        setSelectedFile(null);
+        setCompiledData(null);
+        setCompiledPdfUrl(null);
+    };
+
+
+    
 
     return (
         <div className="app-container">
@@ -17,16 +31,18 @@ export const App = () => {
                 uploadedFiles={uploadedFiles}
                 setUploadedFiles={setUploadedFiles}
                 setSelectedFile={setSelectedFile}
-                
+                onClearFiles={handleClearFiles}
             />
 
-            <div className="main-content">
+            <div className="main-content">              
                 <div className="viewer-sections">
                     <ViewerSection
                         selectedFile={selectedFile}
                         uploadedFiles={uploadedFiles}
                         setSelectedFile={setSelectedFile}
                         setCompiledData={setCompiledData}
+                        setCompiledPdfUrl={setCompiledPdfUrl}
+                        onClearPDF={handleClearPDF}
                     />
                     <CompiledSection
                         compiledData={compiledData}
@@ -36,6 +52,14 @@ export const App = () => {
 
                 </div>
             </div>
+            <div className="footer">
+                (C) 2025 MIT Solutions,
+            </div>
+            <div className="footer-lower">
+                Jesper Olofsson and Truls Rane
+            </div>
+
+
         </div>
     );
 };

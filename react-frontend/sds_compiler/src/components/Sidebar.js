@@ -1,11 +1,7 @@
 import React from "react";
 import FileUploader from "./FileUploader";
 
-const Sidebar = ({ uploadedFiles, setUploadedFiles, setSelectedFile }) => {
-    const handleClearList = () => {
-        setUploadedFiles([]);
-        setSelectedFile(null);
-    };
+const Sidebar = ({ uploadedFiles, setUploadedFiles, setSelectedFile, onClearFiles }) => {
 
     return (
         <div className="sidebar">
@@ -27,7 +23,7 @@ const Sidebar = ({ uploadedFiles, setUploadedFiles, setSelectedFile }) => {
             </div>
 
             {uploadedFiles.length > 0 && (
-                <button className="clear-button" onClick={handleClearList}>
+                <button className="clear-button" onClick={onClearFiles}>
                     Clear files
                 </button>
             )}

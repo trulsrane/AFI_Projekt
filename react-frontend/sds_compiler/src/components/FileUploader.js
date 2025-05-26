@@ -31,7 +31,8 @@ const FileUploader = ({ onFilesUpdate }) => {
 
     return (
         <div className="file-uploader">
-            <h2>Upload and view PDF-files</h2>
+            <h2> Safety Data Sheet analyzer</h2>
+            <h3>Upload and view PDF-files</h3>
             <div className="file-upload-row">
                 <label htmlFor="file-upload" className="browse-button">Browse</label>
                 <span className="upload-instruction">Browse and upload file(s)</span>
