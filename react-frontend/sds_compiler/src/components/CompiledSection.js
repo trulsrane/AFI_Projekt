@@ -92,7 +92,7 @@ const CompiledSection = ({ compiledData, compiledPdfUrl, setCompiledPdfUrl }) =>
                     if (compiledPdfUrl) {
                         const a = document.createElement("a");
                         a.href = compiledPdfUrl;
-                        a.download = "compiled.pdf";
+                        a.download = "compiled_sds.pdf";
                         a.click();
                     }
                 }}
