@@ -1,5 +1,5 @@
 from GeminiHandler import GeminiHandler
-from fastapi import FastAPI, HTTPException, UploadFile, File
+from fastapi import FastAPI, HTTPException, UploadFile, File, Request
 import shutil
 from pydantic import BaseModel
 from dotenv import load_dotenv
@@ -12,9 +12,28 @@ from pypdfium2 import PdfDocument  # Behövs för PyMuPDF4LLM ibland
 import pymupdf4llm
 from PDFHandler import PDFHandler
 
+# Nya paket
+from fastapi.responses import StreamingResponse
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.utils import simpleSplit
+import io
+
 load_dotenv()
 
+# lagt till för att köra CORS ladda in med: pip install middleware
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
+
+# Tillåt återkomst till backend från frontend med CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3001"],  # ändra till 3000, jag kör på 3001
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class TextInput(BaseModel):
     text: str
@@ -53,3 +72,54 @@ async def create_upload_file(file: UploadFile):
 @app.get("/")
 def root():
     return {"Hello": "World"}
+
+
+# Test för att skapa pdf av json ladda in: pip install reportlab
+
+@app.post("/generate-pdf/")
+async def generate_pdf(request: Request):
+    data = await request.json()
+
+    buffer = io.BytesIO()
+    c = canvas.Canvas(buffer, pagesize=A4)
+    width, height = A4
+
+    margin = 50
+    line_spacing = 14
+    y = height - margin
+
+    c.setFont("Helvetica-Bold", 12)
+    c.drawString(margin, y, "Compiled data")
+    y -= line_spacing * 2
+
+    c.setFont("Helvetica", 10)
+
+    for key, value in data.items():
+        if y < margin:
+            c.showPage()
+            y = height - margin
+            c.setFont("Helvetica", 10)
+
+        # Rubrik/key
+        c.setFont("Helvetica-Bold", 10)
+        c.drawString(margin, y, f"{key}:")
+        y -= line_spacing
+
+        # Värde/text med radbrytningar
+        c.setFont("Helvetica", 10)
+        wrapped_lines = simpleSplit(str(value), "Helvetica", 10, width - 2 * margin)
+
+        for line in wrapped_lines:
+            if y < margin:
+                c.showPage()
+                y = height - margin
+                c.setFont("Helvetica", 10)
+            c.drawString(margin + 10, y, line)
+            y -= line_spacing
+
+        y -= line_spacing  # Extra mellanrum mellan block
+
+    c.save()
+    buffer.seek(0)
+
+    return StreamingResponse(buffer, media_type="application/pdf")

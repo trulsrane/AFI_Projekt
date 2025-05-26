@@ -8,3 +8,5 @@ python-multipart
 python-dotenv
 requests
 pypdfium2
+repportlab
+middleware
