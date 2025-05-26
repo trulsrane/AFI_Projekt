@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const FileUploader = ({ onFilesUpdate }) => {
     const fileType = ['application/pdf'];
+    const [error, setError] = useState('');
 
     const handleChange = (e) => {
         const selectedFiles = Array.from(e.target.files);
+
         const validFiles = selectedFiles.filter(file => fileType.includes(file.type));
+        const invalidFiles = selectedFiles.filter(file => !fileType.includes(file.type));
+
+        if (invalidFiles.length > 0) {
+            setError('No PDF-file was selected. Please use a valid format.');
+        } else {
+            setError('');
+        }
 
         const readers = validFiles.map(file => {
             return new Promise((resolve) => {
@@ -35,6 +44,7 @@ const FileUploader = ({ onFilesUpdate }) => {
                 className="file-input"
                 multiple
             />
+            {error && <div className="file-error">{error}</div>}
         </div>
     );
 };
