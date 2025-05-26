@@ -14,7 +14,7 @@ class PDFHandler:
 
             # Testa läsa filen som binär säkerhett
             if not os.path.exists(tmp_path):
-                raise FileNotFoundError("Tempfile dit could not be created.")
+                raise FileNotFoundError("Tempfile could not be created.")
 
             # Extrahera text med pymupdf4llm
             text = pymupdf4llm.to_markdown(tmp_path)

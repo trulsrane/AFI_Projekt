@@ -51,7 +51,7 @@ const ViewerSection = ({ selectedFile, uploadedFiles, setSelectedFile, setCompil
 
         } catch (error) {
             console.error("API error:", error);
-            alert("Something went wrong.");
+            alert("Something went wrong, is backend running?");
         }
     };
 
