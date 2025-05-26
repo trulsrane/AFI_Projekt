@@ -89,6 +89,7 @@ const CompiledSection = ({ compiledData, compiledPdfUrl, setCompiledPdfUrl }) =>
             <button
                 className="download-button"
                 onClick={() => {
+
                     // Gör PDF-filen nerladdningsbar
                     if (compiledPdfUrl) {
                         const a = document.createElement("a");
