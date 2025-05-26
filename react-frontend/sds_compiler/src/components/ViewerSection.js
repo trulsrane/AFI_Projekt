@@ -1,7 +1,7 @@
 import React from "react";
 import PDFViewer from "./PDFViewer";
 
-const ViewerSection = ({ selectedFile, uploadedFiles, setSelectedFile, /*setCompiledData,*/ setCompiledPdfUrl}) => {
+const ViewerSection = ({ selectedFile, uploadedFiles, setSelectedFile, setCompiledData, setCompiledPdfUrl}) => {
     const handleDrop = (e) => {
         e.preventDefault();
         const fileData = e.dataTransfer.getData("application/pdf");
@@ -13,7 +13,6 @@ const ViewerSection = ({ selectedFile, uploadedFiles, setSelectedFile, /*setComp
 
     const handleClearPDF = () => {
         setSelectedFile(null);
-        /*setCompiledData(null); // Rensa kompilerad data när PDF rensas*/
     };
 
     const getFileNameFromData = (data) => {
@@ -31,37 +30,32 @@ const ViewerSection = ({ selectedFile, uploadedFiles, setSelectedFile, /*setComp
             const formData = new FormData();
             formData.append("file", blob, "uploaded.pdf");
 
-            // Test för pdf extract
-            //const response = await fetch("http://localhost:8000/test/extract-pdf4llm/", {
-            //    method: "POST",
-            //    body: formData,
-            //});
-
-            // Skicka anrop till Gemeni
             const response = await fetch("http://localhost:8000/process-pdf-and-analyze/", {
                 method: "POST",
                 body: formData,
             });
 
-            const extractedData = await response.json();
+            const result = await response.json();
 
-            // Skicka till PDF-generator
-            const pdfResponse = await fetch("http://localhost:8000/generate-pdf/", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(extractedData),
-            });
+            // Om Gemini returnerar ett JSON-objekt som textsträng parsa det
+            let readableData = result.SDB;
+            if (typeof readableData === "string") {
+                try {
+                    readableData = JSON.parse(readableData);
+                } catch (e) {
+                    console.warn("Could not parse Gemini output as JSON, showing as text");
+                }
+            }
 
-            const pdfBlob = await pdfResponse.blob();
-            const pdfUrl = URL.createObjectURL(pdfBlob);
+            // Visa i UI
+            setCompiledData(readableData);
 
-            // Skicka till App
-            setCompiledPdfUrl(pdfUrl);
         } catch (error) {
             console.error("API error:", error);
-            alert("Something went wrong, is backend running?");
+            alert("Something went wrong.");
         }
     };
+
 
     return (
         <div className="section">

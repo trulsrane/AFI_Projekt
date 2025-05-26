@@ -104,20 +104,41 @@ async def generate_pdf(request: Request):
         c.setFont("Helvetica-Bold", 10)
         c.drawString(margin, y, f"{key}:")
         y -= line_spacing
-
-        # Värde/text med radbrytningar
         c.setFont("Helvetica", 10)
-        wrapped_lines = simpleSplit(str(value), "Helvetica", 10, width - 2 * margin)
 
-        for line in wrapped_lines:
-            if y < margin:
-                c.showPage()
-                y = height - margin
-                c.setFont("Helvetica", 10)
-            c.drawString(margin + 10, y, line)
-            y -= line_spacing
+        # Hantera listor separat
+        if isinstance(value, list):
+            for item in value:
+                wrapped_lines = simpleSplit(str(item), "Helvetica", 10, width - 2 * margin)
+                for line in wrapped_lines:
+                    if y < margin:
+                        c.showPage()
+                        y = height - margin
+                        c.setFont("Helvetica", 10)
+                    c.drawString(margin + 10, y, f"-{line}")
+                    y -= line_spacing
+        elif isinstance(value, dict):
+            for subkey, subvalue in value.items():
+                subtext = f"{subkey}: {subvalue}"
+                wrapped_lines = simpleSplit(subtext, "Helvetica", 10, width - 2 * margin)
+                for line in wrapped_lines:
+                    if y < margin:
+                        c.showPage()
+                        y = height - margin
+                        c.setFont("Helvetica", 10)
+                    c.drawString(margin + 10, y, line)
+                    y -= line_spacing
+        else:
+            wrapped_lines = simpleSplit(str(value), "Helvetica", 10, width - 2 * margin)
+            for line in wrapped_lines:
+                if y < margin:
+                    c.showPage()
+                    y = height - margin
+                    c.setFont("Helvetica", 10)
+                c.drawString(margin + 10, y, line)
+                y -= line_spacing
 
-        y -= line_spacing  # Extra mellanrum mellan block
+        y -= line_spacing 
 
     c.save()
     buffer.seek(0)

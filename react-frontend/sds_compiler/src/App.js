@@ -8,7 +8,7 @@ export const App = () => {
     const [compiledPdfUrl, setCompiledPdfUrl] = useState(null);
     const [uploadedFiles, setUploadedFiles] = useState([]);
     const [selectedFile, setSelectedFile] = useState(null);
-    /*const [compiledData, setCompiledData] = useState(null);*/
+    const [compiledData, setCompiledData] = useState(null);
 
 
     return (
@@ -26,13 +26,14 @@ export const App = () => {
                         selectedFile={selectedFile}
                         uploadedFiles={uploadedFiles}
                         setSelectedFile={setSelectedFile}
-                        /*setCompiledData={setCompiledData}*/
-                        setCompiledPdfUrl={setCompiledPdfUrl}
+                        setCompiledData={setCompiledData}
                     />
                     <CompiledSection
-                        /*compiledData={compiledData}*/
+                        compiledData={compiledData}
                         compiledPdfUrl={compiledPdfUrl}
+                        setCompiledPdfUrl={setCompiledPdfUrl}
                     />
+
                 </div>
             </div>
         </div>
