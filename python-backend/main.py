@@ -106,7 +106,7 @@ async def generate_pdf(request: Request):
         y -= line_spacing
         c.setFont("Helvetica", 10)
 
-        # Hantera listor separat
+        # Hanterar Hxxx lista
         if isinstance(value, list):
             for item in value:
                 wrapped_lines = simpleSplit(str(item), "Helvetica", 10, width - 2 * margin)

@@ -37,7 +37,7 @@ const ViewerSection = ({ selectedFile, uploadedFiles, setSelectedFile, setCompil
 
             const result = await response.json();
 
-            // Om Gemini returnerar ett JSON-objekt som textsträng parsa det
+            // Parsa json till text
             let readableData = result.SDB;
             if (typeof readableData === "string") {
                 try {
@@ -47,7 +47,6 @@ const ViewerSection = ({ selectedFile, uploadedFiles, setSelectedFile, setCompil
                 }
             }
 
-            // Visa i UI
             setCompiledData(readableData);
 
         } catch (error) {
@@ -55,7 +54,6 @@ const ViewerSection = ({ selectedFile, uploadedFiles, setSelectedFile, setCompil
             alert("Something went wrong.");
         }
     };
-
 
     return (
         <div className="section">
