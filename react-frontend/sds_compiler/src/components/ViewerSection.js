@@ -4,7 +4,7 @@ import PDFViewer from "./PDFViewer";
 // Komponent för att visa, dra/släppa och analysera en PDF
 const ViewerSection = ({ selectedFile, uploadedFiles, setSelectedFile, setCompiledData, setCompiledPdfUrl, onClearPDF }) => {
 
-    // Drag and drop funkion
+    // Drag and drop funkion (Drop target)
     const handleDrop = (e) => {
         e.preventDefault();
         const fileData = e.dataTransfer.getData("application/pdf");

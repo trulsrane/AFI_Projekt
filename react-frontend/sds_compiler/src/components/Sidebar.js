@@ -8,6 +8,8 @@ const Sidebar = ({ uploadedFiles, setUploadedFiles, setSelectedFile, onClearFile
             <FileUploader onFilesUpdate={setUploadedFiles} />
 
             <div className="file-list">
+
+            {/*Drag and drop (Drop source)*/}
                 {uploadedFiles.map((file, index) => (
                     <div
                         key={index}
